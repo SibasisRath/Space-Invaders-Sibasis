@@ -3,4 +3,8 @@
   <PropertyGroup>
     <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerEnvironment>D:\SFML\SFML-2.6.1-windows-vc17-64-bit\SFML-2.6.1\bin</LocalDebuggerEnvironment>
+  </PropertyGroup>
 </Project>
