@@ -18,9 +18,24 @@ int main() {
         }
 
         // Clear the window
-        window->clear(sf::Color::Blue);
+        window->clear(sf::Color::Black);
 
         // Draw your content here...
+        // Draw a circle
+        sf::CircleShape circle(50); // Radius 50
+        circle.setFillColor(sf::Color::Green);
+        circle.setPosition(0, 0); // Set position
+        window->draw(circle);
+
+        sf::RectangleShape square(sf::Vector2f(50,50));
+        square.setFillColor(sf::Color::Red);
+        square.setPosition(200, 200); // Set position
+        window->draw(square);
+
+        sf::CircleShape tri(80, 3);
+        tri.setFillColor(sf::Color::Blue);
+        tri.setPosition(500, 500);
+        window->draw(tri);
 
         // Display what was drawn
         window->display();
