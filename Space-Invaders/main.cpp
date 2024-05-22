@@ -26,14 +26,42 @@ public: // public Access Modifier
     void setScore(int newScore) {
         player_score = newScore;
     }
+    sf::Vector2f getPosition() {
+        return position;
+    }
+
+    void setPosition(sf::Vector2f newPositionValue) {
+        position = newPositionValue;
+    }
     void takeDamage() {};
-    void move() {};
+    void move() {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            // Move the player to the left
+            position.x -= movement_speed;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            // Move the player to the right
+            position.x += movement_speed;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+            // Move the player up
+            position.y -= movement_speed;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+            // Move the player down
+            position.y += movement_speed;
+        }
+    }
     void shootBullets() {};
 };
 int main() {
     // creating player object
     Player player;
-
+    // Load the player ship texture
+    player.player_texture.loadFromFile("assets/textures/player_ship.png"); 
+    // Set the player sprite variable
+    player.player_sprite.setTexture(player.player_texture);   
+    
     // Define the video mode (dimensions)
     sf::VideoMode videoMode = sf::VideoMode(800, 600);
 
@@ -48,9 +76,14 @@ int main() {
                 window.close();
         }
 
+        // Handle keyboard input
+        player.move();
 
         // Clear the window
         window.clear(sf::Color::Blue);
+
+        player.player_sprite.setPosition(player.getPosition());
+        window.draw(player.player_sprite);
 
         // Display whatever you draw
         window.display();
