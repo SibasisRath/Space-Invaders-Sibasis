@@ -27,15 +27,31 @@ int main() {
         circle.setPosition(0, 0); // Set position
         window->draw(circle);
 
+        // Draw a Square
         sf::RectangleShape square(sf::Vector2f(50,50));
         square.setFillColor(sf::Color::Red);
         square.setPosition(200, 200); // Set position
         window->draw(square);
 
+
+        // Draw a triangle 
         sf::CircleShape tri(80, 3);
         tri.setFillColor(sf::Color::Blue);
         tri.setPosition(500, 500);
         window->draw(tri);
+
+        // Draw a png. Take the png as the texture of a sprite
+        sf::Texture outscal_texture;
+        outscal_texture.loadFromFile("assets/textures/outscal_logo.png");
+
+        sf::Sprite outscal_sprite;
+        outscal_sprite.setTexture(outscal_texture);
+
+        outscal_sprite.setPosition(200, 100); // Position
+        outscal_sprite.setRotation(45); // Rotation in degrees
+        outscal_sprite.setScale(0.5, 0.5); // Scale factor
+
+        window->draw(outscal_sprite);
 
         // Display what was drawn
         window->display();
