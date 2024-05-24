@@ -10,6 +10,7 @@ private: // private Access Modifier
     int health = 3;
     sf::Vector2f position = sf::Vector2f(200.0f, 100.0f);
     int player_score = 0;
+    const float move_offset = 0.1f;
 
 public: // public Access Modifier
 
@@ -37,23 +38,24 @@ public: // public Access Modifier
     void move() {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
             // Move the player to the left
-            position.x -= movement_speed;
+            position.x -= movement_speed * move_offset;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
             // Move the player to the right
-            position.x += movement_speed;
+            position.x += movement_speed * move_offset;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
             // Move the player up
-            position.y -= movement_speed;
+            position.y -= movement_speed * move_offset;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
             // Move the player down
-            position.y += movement_speed;
+            position.y += movement_speed * move_offset;
         }
     }
     void shootBullets() {};
 };
+
 int main() {
     // creating player object
     Player player;
